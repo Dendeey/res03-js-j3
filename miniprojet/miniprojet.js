@@ -164,23 +164,76 @@ let users = [
 
 function countActiveUsers(users) 
 {
-
-    for (let i = 0; i < users.length; i++) 
+    let activeUsers = 0;
+    for (activeUser of users) 
     {
-        let result = 0;
-        for (activeUsers of users) 
+        if (activeUser.isActive === true) 
         {
-            if (activeUsers.isActive === true) 
-            {
-                result = result + activeUsers.isActive;
-            }
-
+            activeUsers = activeUsers + activeUser.isActive;
         }
-        return result;
+
     }
+    return activeUsers;
 }
 
 console.log(`We currently have ${ countActiveUsers(users) } active users.`);
+
+function getActiveUsers(users){
+    
+    let getActiveUser = 0;
+    for (activeUser of users) 
+    {
+        if (activeUser.isActive === true) 
+        {
+            getActiveUser = getActiveUser + activeUser.isActive;
+        }
+    }
+    
+    return getActiveUser;
+}
+
+function hasBlueEyes(activeUsers) {
+    
+    let ActiveUserBlueEyes = 0;
+    
+    for(user of users)
+    {
+        if(user.eyeColor === "blue" && user.isActive === true)
+        {
+            ActiveUserBlueEyes = ActiveUserBlueEyes + 1;
+        }
+    }
+    
+    return ActiveUserBlueEyes;
+}
+
+console.log(`Out of our currently ${getActiveUsers(users)} active users, ${hasBlueEyes()} have blue eyes.`);
+
+function getActiveUsersAges(users) 
+{
+    let ActiveUsersAges = 0;
+    for(user of users)
+    {
+        if(user.isActive === true)
+        {
+            ActiveUsersAges = ActiveUsersAges + user.age;
+        }
+    }
+    return ActiveUsersAges;
+}
+
+let result = getActiveUsersAges(users);
+console.log(result);
+
+function computeActiveUsersAverageAge(ages) 
+{
+    let AverageAge = getActiveUsersAges(users) / getActiveUsers(users);
+    return AverageAge;
+}
+
+let average = computeActiveUsersAverageAge();
+console.log(average);
+
 
 
 
